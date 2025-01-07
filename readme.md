@@ -1,8 +1,6 @@
 # Learning C++ as a C# developer
 
 This is C++ from a C# perspective.
-I have been a C# dev for years and recently ive starting learning C++.
-These are differences i have found between C# and C++ that i want to write down to remember.
 
 ## Headers
 
