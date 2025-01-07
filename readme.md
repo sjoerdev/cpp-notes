@@ -4,7 +4,11 @@ This is C++ from a C# perspective.
 
 ## Headers
 
-headers
+All code goes in ``.cpp`` files, and then every file has a header ``.hpp`` file with the same exact name which contains all the declerations (names) of your functions.
+
+You can access code from other files only by using ``#include "file.h"`` at the top of your code. Which will simply copy the entire header to that point.
+
+You can include a header in 2 ways: ``#include "file.h"`` or ``#include <file.h>``. Using quotes will search the header in your current directory and using angled brackets will search the header in the include directory
 
 ## Pointers
 
@@ -90,10 +94,31 @@ But a better alternative is using ``auto variable = new Type();`` and release it
 
 Leaks:
 
-in C++ heap memory does not automatically free when the application terminates. and in both C++ and C# OpenGL data like buffers and textures in vram also dont automatically free when the application terminates.
-(generally speaking the os will reclaim unfreed memory when the application terminates, but relying on this is bad practice)
+In C++ heap memory does not automatically free when the application terminates. and in both C++ and C# OpenGL data like buffers and textures in vram also dont automatically free when the application terminates.
+Generally speaking the os will reclaim unfreed memory when the application terminates, but relying on this is bad practice.
 
+## Public/Private
 
+In C# you can put public or private before any member of a class like so:
 
+```csharp
+class Person
+{
+    public float a;
+    private float b;
+    public float c;
+}
+```
 
+In C++ you put all public member under ``public:`` and all private members under ``private:`` like so:
 
+```cpp
+class Person
+{
+    public:
+        float a;
+        float c;
+    private:
+        float b;
+}
+```
