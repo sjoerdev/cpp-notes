@@ -48,6 +48,9 @@ void (Class* instance_ptr)
     // changes the original instance
     instance_ptr->variable = 1;
 
+    // changes the original instance
+    (*instance_ptr).variable = 1;
+
     // this creates a copy
     Class instance_copy = *instance_ptr;
 }
