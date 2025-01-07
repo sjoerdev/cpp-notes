@@ -4,9 +4,13 @@ This is C++ from a C# perspective.
 
 ## Setup
 
-compiler
+Compiler:
 
-to install clang go to [the github llvm releases](https://github.com/llvm/llvm-project/releases) and download the installer with the name ``LLVM-X.X.X-win64.exe``
+To install ``clang++`` go to the [llvm github releases](https://github.com/llvm/llvm-project/releases) and download the installer with the name ``LLVM-X.X.X-win64.exe``
+
+Build System:
+
+To install ``cmake`` go to the [cmake downloads page](https://cmake.org/download/) and download the windows x64 installer called ``cmake-X.X.X-windows-x86_64.msi``
 
 ## Headers
 
