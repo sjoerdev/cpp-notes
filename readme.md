@@ -2,6 +2,12 @@
 
 This is C++ from a C# perspective.
 
+## Setup
+
+compiler
+
+to install clang go to [the github llvm releases](https://github.com/llvm/llvm-project/releases) and download the installer with the name ``LLVM-X.X.X-win64.exe``
+
 ## Headers
 
 All code goes in ``.cpp`` files, and then every file has a header ``.hpp`` file with the same exact name which contains all the declerations (names) of your functions.
