@@ -8,11 +8,24 @@ headers
 
 ## Pointers
 
-pointers
+Raw pointers in C++ work the same as in C#, the syntax is the exact same:
+```cpp
+int x = 1;
+int* ptr = &x;
+int y = *ptr;
+```
+
+it doesnt matter where in a pointer you use a space as it will all work:
+
+```cpp
+int* ptr = &x;
+int *ptr = &x;
+int*ptr = &x;
+```
 
 ## Reference Types
 
-In C++ classes are value types, not referemce types like in C#.
+In C++ classes are value types by default, not reference types like in C#.
 
 Passing a class instance by reference to a function in C# is:
 ```csharp
