@@ -1,0 +1,69 @@
+## C++
+---
+
+This is C++ from a C# perspective.
+I have been a C# dev for years and recently ive starting learning C++.
+These are differences i have found between C# and C++ that i want to write down to remember.
+
+#### Headers
+
+headers
+
+#### Pointers
+
+pointers
+
+#### Reference Types
+
+In C++ classes are value types, not referemce types like in C#.
+
+Passing a class instance by reference to a function in C# is:
+```csharp
+// csharp
+void (Class instance)
+{
+    // changes the original instance
+    instance.variable = 1;
+
+    // this creates a copy
+    Class instance_copy = instance.Clone();
+}
+```
+
+Passing a class instance by reference to a function in C++ is:
+```cpp
+// cpp
+void (Class& instance)
+{
+    // changes the original instance
+    instance.variable = 1;
+
+    // this creates a copy
+    Class instance_copy = instance;
+}
+```
+
+You can also pass a class instance in C++ with a pointer:
+```cpp
+// cpp
+void (Class* instance_ptr)
+{
+    // changes the original instance
+    instance_ptr->variable = 1;
+
+    // this creates a copy
+    Class instance_copy = *instance_ptr;
+}
+```
+
+func(Class instance)
+
+and in c++ is: func(Class& instance). that means cloning an instance in c++ is easy
+
+#### Memory Leaks
+
+c++ heap memory does not automatically free when the application terminates. and in both c++ and c# opengl data like buffers and textures in vram also dont automatically free when the application terminates. (generally speaking the os will reclaim unfreed memory when the application terminates, but relying on this is bad practice)
+
+#### Smart Pointers
+
+std::unique_ptr, std::shared_ptr, std::weak_ptr
