@@ -88,6 +88,7 @@ void (Class* instance_ptr)
     Class instance_copy = *instance_ptr;
 }
 ```
+![csharp-types](https://github.com/user-attachments/assets/464866ab-4776-4ff9-b340-f86d03750d3c)
 
 ## Memory
 
