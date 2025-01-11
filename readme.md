@@ -41,6 +41,25 @@ target("project")
 4. Now run ``xmake f -c --yes`` for xmake to restore dependencies
 5. Now run ``xmake run`` to build and execute
 
+**(Optional) Setup Visual Studio Code:**
+
+1. Install the [Microsoft C++ Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) for vscode
+2. Install the [XMake Extension](https://marketplace.visualstudio.com/items?itemName=tboox.xmake-vscode) for vscode
+3. To the xmake file add ``add_defines("XMAKE_ENABLE_COMPILE_COMMANDS")``
+4. Create a file called ``.vscode/c_cpp_properties.json`` with this json:
+```json
+{
+    "version": 4,
+    "configurations":
+    [
+        {
+            "name": "xmake",
+            "compileCommands": ".vscode/compile_commands.json"
+        }
+    ]
+}
+```
+
 ## Headers
 
 All code goes in ``.cpp`` files, and then every file has a header ``.hpp`` file with the same exact name which contains all the declerations (names) of your functions.
