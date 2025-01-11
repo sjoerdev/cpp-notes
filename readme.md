@@ -33,7 +33,6 @@ project/
 │           └── glad.c
 └── xmake.lua                # xmake file
 ```
-
 6. Setup the ``xmake.lua`` file like so:
 ```lua
 -- dependencies
@@ -56,6 +55,7 @@ target("project")
     add_includedirs("thirdparty/glad/include")
     add_files("thirdparty/glad/src/*.c")
 ```
+7. Now run ``xmake run`` to build and execute
 
 ## Headers
 
