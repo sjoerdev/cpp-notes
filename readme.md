@@ -126,11 +126,15 @@ int main()
 
 ## Headers
 
+![headers](https://github.com/user-attachments/assets/0bee0c9d-c1b6-4bf9-95a3-635da0fa221f)
+
 All code goes in ``.cpp`` files, and then every file has a header ``.hpp`` file with the same exact name which contains all the declerations (names) of your functions.
 
 You can access code from other files only by using ``#include "file.h"`` at the top of your code. Which will simply copy the entire header to that point.
 
 You can include a header in 2 ways: ``#include "file.h"`` or ``#include <file.h>``. Using quotes will search the header in your current directory and using angled brackets will search the header in the include directory
+
+Read more about header file on [this website](https://www.learncpp.com/cpp-tutorial/header-files/)
 
 ## Pointers
 
@@ -200,7 +204,6 @@ void (Class* instance_ptr)
     Class instance_copy = *instance_ptr;
 }
 ```
-![csharp-types](https://github.com/user-attachments/assets/464866ab-4776-4ff9-b340-f86d03750d3c)
 
 ## Memory
 
