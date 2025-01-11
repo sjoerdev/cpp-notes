@@ -19,7 +19,8 @@
 ```lua
 -- dependencies
 add_requires("glfw")
-add_requires("glad")
+add_requires("glad", { configs = { api = "gl=3.3", profile = "core", spec = "gl"} })
+add_requires("imgui", { configs = { opengl3 = true, glfw = true } })
 
 -- project
 target("project")
@@ -32,19 +33,22 @@ target("project")
     add_files("src/*.cpp")
 
     -- linking
-    add_packages("glfw", "glad")
+    add_packages("glfw", "glad", "imgui")
 ```
 4. Now run ``xmake f -c --yes`` for xmake to setup the libraries
 5. Now create an opengl hello world like this:
 ```cpp
+#include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include <iostream>
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
 
 // resizing callback
 void resize(GLFWwindow* window, int width, int height)
 {
-    glViewport(0, 0, width, height);  // Adjust OpenGL viewport when the window size changes
+    glViewport(0, 0, width, height);
 }
 
 int main()
@@ -80,19 +84,42 @@ int main()
         return -1;
     }
 
-    // Set the framebuffer size callback
+    // framebuffer size callback
     glfwSetFramebufferSizeCallback(window, resize);
+
+    // init imgui
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    ImGuiIO& io = ImGui::GetIO();
+    ImGui_ImplGlfw_InitForOpenGL(window, true);
+    ImGui_ImplOpenGL3_Init("#version 330"); // GLSL version
 
     // render loop
     while (!glfwWindowShouldClose(window))
     {
+        // poll events
+        glfwPollEvents();
+
+        // clear screen
         glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        // imgui
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+        ImGui::ShowDemoWindow();
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+        // swap buffers
         glfwSwapBuffers(window);
-        glfwPollEvents();
     }
 
     // cleanup
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
     glfwDestroyWindow(window);
     glfwTerminate();
     return 0;
@@ -105,7 +132,7 @@ int main()
 
 1. Install the [Microsoft C++ Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) for vscode
 2. Install the [XMake Extension](https://marketplace.visualstudio.com/items?itemName=tboox.xmake-vscode) for vscode
-3. To the xmake file add ``add_defines("XMAKE_ENABLE_COMPILE_COMMANDS")``
+3. To your xmake file add ``add_defines("XMAKE_ENABLE_COMPILE_COMMANDS")``
 4. Create a file called ``.vscode/c_cpp_properties.json`` with this json:
 ```json
 {
