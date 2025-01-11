@@ -38,8 +38,72 @@ target("project")
     -- linking
     add_packages("glfw", "glad")
 ```
-4. Now run ``xmake f -c --yes`` for xmake to restore dependencies
-5. Now run ``xmake run`` to build and execute
+4. Now run ``xmake f -c --yes`` for xmake to setup the libraries
+5. Now create an opengl hello world like this:
+```cpp
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+#include <iostream>
+
+// resizing callback
+void resize(GLFWwindow* window, int width, int height)
+{
+    glViewport(0, 0, width, height);  // Adjust OpenGL viewport when the window size changes
+}
+
+int main()
+{
+    // try init glfw
+    if (!glfwInit())
+    {
+        printf("failed to init glfw");
+        return -1;
+    }
+
+    // set opengl version
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+    // create window
+    GLFWwindow* window = glfwCreateWindow(800, 600, "program", nullptr, nullptr);
+    if (!window)
+    {
+        printf("failed to create glfw window");
+        glfwTerminate();
+        return -1;
+    }
+
+    // set opengl context
+    glfwMakeContextCurrent(window);
+
+    // load opengl with glad
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+    {
+        printf("failed to init glad");
+        return -1;
+    }
+
+    // Set the framebuffer size callback
+    glfwSetFramebufferSizeCallback(window, resize);
+
+    // render loop
+    while (!glfwWindowShouldClose(window))
+    {
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+        glfwSwapBuffers(window);
+        glfwPollEvents();
+    }
+
+    // cleanup
+    glfwDestroyWindow(window);
+    glfwTerminate();
+    return 0;
+}
+```
+7. Now run ``xmake`` to build the project
+8. And the run ``xmake run`` to run the project
 
 **(Optional) Setup Visual Studio Code:**
 
