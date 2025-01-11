@@ -1,5 +1,3 @@
-# Learning C++ as a C# developer
-
 ## Setup Tools
 
 **MSVC Compiler:**
