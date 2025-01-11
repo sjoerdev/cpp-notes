@@ -12,7 +12,37 @@ This is C++ from a C# perspective.
 
 **XMake Build System:**
 
+1. Run ``winget install xmake`` in the terminal
+2. Check installation with ``xmake --version`` in the terminal
 
+**(Optional) Setup OpenGL Project:**
+
+1. Create a project directory with ``mkdir project`` and ``cd project``
+2. Init xmake in the project with ``xmake create -l c++ -t console``
+3. Download the [Glad OpenGL 3.3 Core Loader](https://glad.dav1d.de/#language=c&specification=gl&api=gl%3D3.3&api=gles1%3Dnone&api=gles2%3Dnone&api=glsc2%3Dnone&profile=core&loader=on)
+4. Create a directory called ``thirdparty`` and place the glad files in there
+5. Setup the ``xmake.lua`` file like so:
+```lua
+-- dependencies
+add_requires("glfw")
+
+-- project
+target("project")
+
+    -- settings
+    set_kind("binary")
+    set_languages("c++17")
+
+    -- source files to include
+    add_files("src/*.cpp")
+
+    -- add glfw package
+    add_packages("glfw")
+
+    -- include glad header and source
+    add_includedirs("thirdparty/glad/include")
+    add_files("thirdparty/glad/src/*.c")
+```
 
 ## Headers
 
