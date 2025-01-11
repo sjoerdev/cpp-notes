@@ -55,7 +55,8 @@ target("project")
     add_includedirs("thirdparty/glad/include")
     add_files("thirdparty/glad/src/*.c")
 ```
-7. Now run ``xmake run`` to build and execute
+7. Now run ``xmake f -c --yes`` for xmake to setup its packages
+8. Now run ``xmake run`` to build and execute
 
 ## Headers
 
