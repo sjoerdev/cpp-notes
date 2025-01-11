@@ -1,7 +1,5 @@
 # Learning C++ as a C# developer
 
-This is C++ from a C# perspective.
-
 ## Setup Tools
 
 **MSVC Compiler:**
