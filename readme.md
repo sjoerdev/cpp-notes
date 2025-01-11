@@ -19,24 +19,11 @@ This is C++ from a C# perspective.
 
 1. Create a project directory with ``mkdir project`` and ``cd project``
 2. Init xmake in the project with ``xmake create -l c++ -t console``
-3. Download the [Glad OpenGL 3.3 Core Loader](https://glad.dav1d.de/#language=c&specification=gl&api=gl%3D3.3&api=gles1%3Dnone&api=gles2%3Dnone&api=glsc2%3Dnone&profile=core&loader=on)
-4. Create a directory called ``thirdparty`` and place the glad in there like so:
-```
-project/
-├── src/                     # your code
-│   └── main.cpp
-├── thirdparty/
-│   └── glad/                # glad files
-│       ├── include/
-│       │   └── glad/
-│       └── src/
-│           └── glad.c
-└── xmake.lua                # xmake file
-```
-6. Setup the ``xmake.lua`` file like so:
+3. Setup the ``xmake.lua`` file like so:
 ```lua
 -- dependencies
 add_requires("glfw")
+add_requires("glad")
 
 -- project
 target("project")
@@ -45,18 +32,14 @@ target("project")
     set_kind("binary")
     set_languages("c++17")
 
-    -- source files to include
+    -- sources
     add_files("src/*.cpp")
 
-    -- add glfw package
-    add_packages("glfw")
-
-    -- include glad header and source
-    add_includedirs("thirdparty/glad/include")
-    add_files("thirdparty/glad/src/*.c")
+    -- linking
+    add_packages("glfw", "glad")
 ```
-7. Now run ``xmake f -c --yes`` for xmake to setup its packages
-8. Now run ``xmake run`` to build and execute
+4. Now run ``xmake f -c --yes`` for xmake to restore dependencies
+5. Now run ``xmake run`` to build and execute
 
 ## Headers
 
