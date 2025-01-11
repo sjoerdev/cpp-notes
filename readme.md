@@ -2,15 +2,17 @@
 
 This is C++ from a C# perspective.
 
-## Setup
+## Setup Tools
 
-Compiler:
+**MSVC Compiler:**
 
-To install ``clang++`` go to the [llvm github releases](https://github.com/llvm/llvm-project/releases) and download the installer with the name ``LLVM-X.X.X-win64.exe``
+1. Download the [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)
+2. Select the ``Desktop development with C++`` workload
+3. Select the ``MSVC Build Tools`` and the ``Windows SDK``
 
-Build System:
+**XMake Build System:**
 
-To install ``cmake`` go to the [cmake downloads page](https://cmake.org/download/) and download the windows x64 installer called ``cmake-X.X.X-windows-x86_64.msi``
+
 
 ## Headers
 
