@@ -125,7 +125,7 @@ int main()
 }
 ```
 5. Now run ``xmake`` to build the project
-6. And the run ``xmake run`` to run the project
+6. And then run ``xmake run`` to run the project
 
 **(Optional) Setup Visual Studio Code:**
 
