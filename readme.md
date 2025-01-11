@@ -35,8 +35,7 @@ target("project")
     -- linking
     add_packages("glfw", "glad", "imgui")
 ```
-4. Now run ``xmake f -c --yes`` for xmake to setup the libraries
-5. Now create an opengl hello world like this:
+4. Now create an opengl hello world like this:
 ```cpp
 #include <iostream>
 #include <glad/glad.h>
@@ -125,8 +124,8 @@ int main()
     return 0;
 }
 ```
-7. Now run ``xmake`` to build the project
-8. And the run ``xmake run`` to run the project
+5. Now run ``xmake`` to build the project
+6. And the run ``xmake run`` to run the project
 
 **(Optional) Setup Visual Studio Code:**
 
