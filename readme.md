@@ -13,8 +13,8 @@
 
 **(Optional) Setup OpenGL Project:**
 
-1. Create a project directory with ``mkdir project`` and ``cd project``
-2. Init xmake in the project with ``xmake create -P ./``
+1. Create a project directory with xmake by running ``xmake create project`` in the terminal
+2. Move inside the directory by running ``cd project`` in the terminal
 3. Setup the ``xmake.lua`` file like so:
 ```lua
 -- dependencies
