@@ -131,7 +131,7 @@ int main()
 
 1. Install the [Microsoft C++ Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) for vscode
 2. Install the [XMake Extension](https://marketplace.visualstudio.com/items?itemName=tboox.xmake-vscode) for vscode
-3. To your xmake file add ``add_defines("XMAKE_ENABLE_COMPILE_COMMANDS")``
+3. Generate ``.vscode/compile_commands.json`` by running ``xmake project -k compile_commands .vscode``
 4. Create a file called ``.vscode/c_cpp_properties.json`` with this json:
 ```json
 {
