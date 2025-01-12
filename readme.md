@@ -14,7 +14,7 @@
 **(Optional) Setup OpenGL Project:**
 
 1. Create a project directory with ``mkdir project`` and ``cd project``
-2. Init xmake in the project with ``xmake create -l c++ -t console ./``
+2. Init xmake in the project with ``xmake create -P ./``
 3. Setup the ``xmake.lua`` file like so:
 ```lua
 -- dependencies
