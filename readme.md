@@ -18,6 +18,7 @@
 3. Setup the ``xmake.lua`` file like so:
 ```lua
 -- dependencies
+add_requires("glm")
 add_requires("glfw")
 add_requires("glad", { configs = { api = "gl=3.3", profile = "core", spec = "gl"} })
 add_requires("imgui", { configs = { opengl3 = true, glfw = true } })
@@ -33,16 +34,22 @@ target("project")
     add_files("src/*.cpp")
 
     -- linking
-    add_packages("glfw", "glad", "imgui")
+    add_packages("glfw", "glad", "imgui", "glm")
 ```
 4. Now create an opengl hello world like this:
 ```cpp
 #include <iostream>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
+#include <imgui.h>
+#include <imgui_impl_glfw.h>
+#include <imgui_impl_opengl3.h>
+#include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
+#include <glm/mat4x4.hpp>
+#include <glm/ext/matrix_transform.hpp>
+#include <glm/ext/matrix_clip_space.hpp>
+#include <glm/ext/scalar_constants.hpp>
 
 // resizing callback
 void resize(GLFWwindow* window, int width, int height)
@@ -132,7 +139,9 @@ int main()
 1. Install the [Microsoft C++ Extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools) for vscode
 2. Install the [XMake Extension](https://marketplace.visualstudio.com/items?itemName=tboox.xmake-vscode) for vscode
 3. Generate ``.vscode/compile_commands.json`` by running ``xmake project -k compile_commands .vscode``
-4. Create a file called ``.vscode/c_cpp_properties.json`` with this json:
+4. For automatic updates add this line to your xmake file ``add_rules("plugin.compile_commands.autoupdate", { outputdir = ".vscode" })``
+5. Now add the ``.vscode/compile_commands.json`` to your ``.gitignore`` file
+6. Create a file called ``.vscode/c_cpp_properties.json`` with this json:
 ```json
 {
     "version": 4,
